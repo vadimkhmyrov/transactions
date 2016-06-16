@@ -1,0 +1,16 @@
+<h3>Accounts:</h3>
+{% for acc in accounts %}
+	<p>{{acc.name}} (${{acc.get_balance}})</p>
+	{% empty %}
+	<p style="color:grey">There are no accounts</p>
+{% endfor %}
+<h3>Transactions:</h3>
+{% for t in transactions %}
+	{% ifequal t.status True %}
+		<p>{{t}}, status: <span style="color:green">success</span></p>
+	{% else %}
+		<p>{{t}}, status: <span style="color:red">failed</span></p>
+	{% endifequal %}
+	{% empty %}
+	<p style="color:grey">There are no transactions</p>
+{% endfor %}
